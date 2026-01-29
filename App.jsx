@@ -1,9 +1,8 @@
 import "./App.css";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import ProductCard from "./components/ProductCard";
-import Footer from "./components/Footer";
-
+import Header from "./componentcorner/src/Header";
+import Hero from "./componentcorner/src/Hero";
+import ProductCard from "./componentcorner/src/ProductCard";
+import Footer from "./componentcorner/src/Footer";
 function App() {
   return (
     <div>
