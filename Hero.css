@@ -1,0 +1,18 @@
+.hero {
+  background-image: url("https://placehold.co/1200x400/667eea/ffffff?text=ComponentCorner");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #667eea;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
