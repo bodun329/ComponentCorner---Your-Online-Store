@@ -1,7 +1,17 @@
-.product-grid {
+.products {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 40px;
   flex-wrap: wrap;
+  gap: 15px;
+}
+
+.cart {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
 }

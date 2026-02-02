@@ -1,16 +1,16 @@
 import "./Header.css";
 
-function Header({ storeName }) {
+function Header({ cartCount }) {
   return (
     <header className="header">
-      <h1>{storeName}</h1>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">Contact</a>
-      </nav>
+      <h2>ComponentCorner</h2>
+      <div className="cart-container">
+        <span className="cart-icon">🛒</span>
+        <span className="cart-count">{cartCount}</span>
+      </div>
     </header>
   );
 }
 
 export default Header;
+

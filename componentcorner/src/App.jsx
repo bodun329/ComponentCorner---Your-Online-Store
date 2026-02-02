@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Header from "./Header";
+import ProductCard from "./ProductCard";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const products = [
+    { id: 1, name: "Wireless Headphones", price: 99.99, image: "https://placehold.co/600x400", description: "Premium noise-cancelling headphones with 30-hour battery life" },
+    { id: 2, name: "Smart Watch", price: 249.99, image: "https://placehold.co/600x400", description: "Fitness tracker with heart rate monitor and GPS" },
+    { id: 3, name: "Bluetooth Speaker", price: 79.99, image: "https://placehold.co/600x400", description: "Portable waterproof speaker with 360-degree sound" },
+    { id: 4, name: "Laptop Stand", price: 49.99, image: "https://placehold.co/600x400", description: "Ergonomic aluminum stand for laptops and tablets" },
+    { id: 5, name: "Webcam", price: 129.99, image: "https://placehold.co/600x400", description: "4K webcam with auto-focus and noise reduction" },
+    { id: 6, name: "Mechanical Keyboard", price: 159.99, image: "https://placehold.co/600x400", description: "RGB backlit keyboard with custom switches" }
+  ];
+
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart.filter(item => item.id !== id));
+  };
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <Header cartCount={cart.length} />
+
+      <h1>ComponentCorner Store</h1>
+
+      <div className="products">
+        {products.map(product => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onAddToCart={addToCart}
+          />
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <h2>Shopping Cart</h2>
+
+      {cart.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        <div className="cart">
+          {cart.map(item => (
+            <div key={item.id} className="cart-item">
+              <span>{item.name} - ${item.price}</span>
+              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            </div>
+          ))}
+          <h3>Total: ${total.toFixed(2)}</h3>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
